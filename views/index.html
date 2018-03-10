@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
+  <body align="center">
+  <!-- margin-left:13%;margin-top:7% -->
+  <div id="box" style="padding:20px 80px 20px 80px;">
+ <br>
+<br>
+<hr/>
+  
+
+<a class="navbar-brand" href="/">首页</a>
+<div>
+	<ul class="nav navbar-nav">
+		<li {{if .IsHome}}class="active"{{end}}><a href="/">使用帮助</a></li>
+		<li {{if .IsCategory}}class="active"{{end}}><a href="/">赞助本站</a></li>
+		<li {{if .IsTopic}}class="active"{{end}}><a href="/">联系站长</a></li>
+	</ul>
+</div>
+
+<div class="pull-right" style="margin-right:8%">
+	{{if .IsLogin}}
+		<div class="btn-group">
+		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{.Username}}
+		<span class="caret"></span>
+		</button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="#"></a></li>
+				<li><a href="#"></a></li>
+				<li class="divider"></li>
+				<li><a href="#">安全退出</a></li>
+			</ul>
+		</div>
+	{{else}}
+		<ul class="nav navbar-nav">
+			<li><a href="/login">登录</a></li>
+			<li><a href="/login">注册</a></li>
+		</ul>
+	{{end}}
+</div>
+
+
+<br>
+<br>
+<br>
+    <div id="notify_topright" style=" margin-right:120px; float:right; color:#333;">公告：支持观看各大视频网站的普通或VIP视频，去广告！复制粘贴视频地址到播放地址栏，再点击播放即可观看！</div>
+<br>
+<br>
+<hr>
+<br>
+
+
+<div align="center" >
+<form class="form-inline">
+	<div class="form-group" >
+    	<label for="Url">播放地址</label>
+    	<input type="text" class="form-control" id="Url" placeholder="各大影视网站视频去广告免VIP--请输入视频地址后点击播放按钮" style="height:38px; width:600px;">
+  	</div>
+  <button type="button" class="btn btn-default"  onClick="play()">   播 放   </button>
+</form>
+</div>
+
+<br><br>
+
+	<div align="center" style=" clear:both;">
+	  <iframe id="player" width="97%" height="580px"  src="http://api.nepian.com/ckparse/?url=http://v.youku.com/v_show/id_XMjcyNzU4Njk5Ng==.html" frameborder="0" border="0" marginwidth="0px" marginheight="0px" scrolling="no"></iframe>
+	</div>
+</div><!--  div box -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+<script type="text/javascript" >
+    	function play(){
+			var url = document.getElementById('Url');
+				//alert('http://api.xfsub.com/index.php?url='+url.value);
+			var player = document.getElementById('player');
+				player.src = 'http://api.nepian.com/ckparse/?url='+url.value;
+			}
+</script>
+
+
+  </body>
+</html>
