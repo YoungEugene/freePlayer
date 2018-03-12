@@ -91,3 +91,27 @@ func SetConfig(cname, cvalue string) (int64, error) {
 	c := &Config{Name: cname, Value: cvalue}
 	return o.Update(c)
 }
+
+/*
+	通过账号密码获取Admin
+*/
+func GetUser(account, pwd string) (*User, error) {
+	user := new(User)
+	err := o.QueryTable("user").Filter("account", account).
+		Filter("password", pwd).One(user)
+	if err != nil {
+		return nil, err
+	}
+	return user, nil
+}
+
+/*
+	注册User
+*/
+func AddUser(account, pwd, nickname, email, phone string) (int64, error) {
+	user := &User{Account: account, Password: pwd, Nickname: nickname, Email: email, Phone: phone}
+	if o.QueryTable("user").Filter("account", account).Exist() {
+		return 0, nil
+	}
+	return o.Insert(user)
+}

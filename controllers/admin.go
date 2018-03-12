@@ -70,7 +70,7 @@ func (this *AdminController) ChgDefaultVedio() { //查看默认视频页和修�
 	} else { //修改默认视频地址
 		this.Data["msg"] = "修改成功！"
 		this.Data["DefaultUrl"] = defaultUrl
-		if num, _ := models.SetConfig("DefaultVideoUrl", defaultUrl); num != 1 {
+		if _, err := models.SetConfig("DefaultVideoUrl", defaultUrl); err != nil {
 			this.Data["msg"] = "修改失败！"
 			this.Data["DefaultUrl"], _ = models.GetConfigByName("DefaultVideoUrl")
 		}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>注册用户</title>
+
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+<div id="box" style="margin-left:18%;margin-top:6%">
+	<div style="width:50%;">
+	<h2>用户注册</h2><br><br>
+<form action="/user/userregister" method="post" class="form-horizontal">
+
+	<div class="form-group">
+    	<label for="account" class="col-sm-2 control-label" >账号</label>
+		<div class="col-sm-10">
+    		<input type="text" class="form-control" id="account" name="account" value="{{.account}}" placeholder="账号名不能为空">
+  		</div>
+	</div>
+	
+	<div class="form-group">
+    	<label for="nickname" class="col-sm-2 control-label">昵称</label>
+		<div class="col-sm-10">
+    		<input type="text" class="form-control" id="nickname" name="nickname" value="{{.nickname}}" placeholder="昵称不能为空">
+  		</div>
+	</div>
+	
+	<div class="form-group">
+    	<label for="email" class="col-sm-2 control-label">邮箱</label>
+		<div class="col-sm-10">
+    		<input type="email" class="form-control" id="email" name="email" value="{{.email}}" placeholder="邮箱不能为空">
+		</div>
+  	</div>
+	
+	<div class="form-group">
+    	<label for="phone" class="col-sm-2 control-label">手机号</label>
+		<div class="col-sm-10">
+    		<input type="text" class="form-control" id="phone" name="phone" value="{{.phone}}" placeholder="手机号不能为空">
+		</div>
+  	</div>
+
+
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">密码</label>
+	<div class="col-sm-10">
+    	<input type="password" class="form-control" id="password" name="password" value="{{.password}}" placeholder="密码不能为空">
+	</div>
+  </div>
+
+	<div class="form-group">
+	    <label for="rePassword" class="col-sm-2 control-label">确认密码</label>
+		 <div class="col-sm-10">
+	    	<input type="password" class="form-control" id="rePassword" name="rePassword" value="{{.rePassword}}" placeholder="确认密码不能为空">
+  		</div>
+	</div>
+	<div align=center>
+  		<button type="submit" class="btn btn-default">注册</button>
+		<div><p><font color="red">{{.msg}}</font></p></div>
+	</div>
+</form>
+		  		
+	
+	</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

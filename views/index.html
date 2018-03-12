@@ -28,24 +28,23 @@
 <div class="pull-right" style="margin-right:8%">
 	{{if .IsLogin}}
 		<div class="btn-group">
-		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{.Username}}
+		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{.Nickname}}
 		<span class="caret"></span>
 		</button>
 			<ul class="dropdown-menu" role="menu">
 				<li><a href="#"></a></li>
 				<li><a href="#"></a></li>
 				<li class="divider"></li>
-				<li><a href="#">安全退出</a></li>
+				<li><a href="/user/userlogout">安全退出</a></li>
 			</ul>
 		</div>
 	{{else}}
 		<ul class="nav navbar-nav">
-			<li><a href="/login">登录</a></li>
-			<li><a href="/login">注册</a></li>
+			<li><a href="/user/openloginpage">登录</a></li>
+			<li><a href="/user/openregisterpage">注册</a></li>
 		</ul>
 	{{end}}
 </div>
-
 
 <br>
 <br>
@@ -70,7 +69,7 @@
 <br><br>
 
 	<div align="center" style=" clear:both;">
-	  <iframe id="player" width="97%" height="580px"  src="http://api.nepian.com/ckparse/?url=http://v.youku.com/v_show/id_XMjcyNzU4Njk5Ng==.html" frameborder="0" border="0" marginwidth="0px" marginheight="0px" scrolling="no"></iframe>
+	  <iframe id="player" width="97%" height="580px"  src="http://api.nepian.com/ckparse/?url={{.DefaultVideoUrl}}" frameborder="0" border="0" marginwidth="0px" marginheight="0px" scrolling="no"></iframe>
 	</div>
 </div><!--  div box -->
 
