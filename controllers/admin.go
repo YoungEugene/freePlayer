@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"strconv"
+
 	"github.com/YoungEugene/freePlayer/models"
 	"github.com/YoungEugene/freePlayer/utils"
 	"github.com/astaxie/beego"
@@ -29,6 +31,21 @@ func (this *AdminController) ManagerHome() { //首页
 
 func (this *AdminController) OpenChgPage() {
 	this.TplName = "manager_changepwd.html"
+}
+
+func (this *AdminController) OpenUserListPage() {
+	if _, ok := CheckLogin(this.Ctx); !ok {
+		this.Redirect("/admin/login", 302)
+		return
+	}
+	pageNoStr := this.Input().Get("pageNo")
+	pageNo, err := strconv.Atoi(pageNoStr)
+	if err != nil {
+		pageNo = 1
+	}
+	userList, _ := models.GetUserList(pageNo)
+	this.Data["UserList"] = userList
+	this.TplName = "manager_users.html"
 }
 
 //============================
@@ -103,6 +120,23 @@ func (this *AdminController) ChgPwd() {
 		}
 	}
 	this.TplName = "manager_changepwd.html"
+
+}
+
+func (this *AdminController) DelUser() {
+	if _, ok := CheckLogin(this.Ctx); !ok {
+		this.Redirect("/admin/login", 302)
+		return
+	}
+	idStr := this.Input().Get("id")
+	id, err := strconv.Atoi(idStr)
+	if err == nil {
+		err = models.DelUserById(int64(id))
+		if err != nil {
+			beego.Error(err)
+		}
+	}
+	this.Redirect("/admin/openuserlistpage", 302)
 
 }
 

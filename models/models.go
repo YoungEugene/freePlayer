@@ -115,3 +115,27 @@ func AddUser(account, pwd, nickname, email, phone string) (int64, error) {
 	}
 	return o.Insert(user)
 }
+
+/*
+	获取用户列表
+*/
+func GetUserList(pageNo int) ([]*User, error) {
+	var userList []*User
+	_, err := o.QueryTable("user").OrderBy("-id").Limit(10, (pageNo-1)*10).All(&userList)
+	return userList, err
+}
+
+/*
+	删除用户
+*/
+func DelUserById(userId int64) error {
+	_, err := o.Delete(&User{Id: userId})
+	return err
+}
+
+/*
+	改User信息
+*/
+func UpdateUser(user *User, cols ...string) (int64, error) {
+	return o.Update(user, cols...)
+}

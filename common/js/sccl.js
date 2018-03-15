@@ -396,7 +396,7 @@ $(function(){
 	/*菜单json*/
 	var menu = [{"id":"1","name":"主菜单","parentId":"0","url":"","icon":"","order":"1","isHeader":"1","childMenus":[
 					{"id":"3","name":"会员管理","parentId":"1","url":"","icon":"&#xe604;","order":"1","isHeader":"0","childMenus":[
-						{"id":"4","name":"查看会员","parentId":"3","url":"userQueryPage.html","icon":"","order":"1","isHeader":"0","childMenus":""},
+						{"id":"4","name":"查看会员","parentId":"3","url":"openuserlistpage.html","icon":"","order":"1","isHeader":"0","childMenus":""},
 					]},
 					{"id":"6","name":"系统管理","parentId":"1","url":"","icon":"&#xe602;","order":"1","isHeader":"0","childMenus":[
 						{"id":"7","name":"修改密码","parentId":"6","url":"/admin/openchgpage.html","icon":"","order":"1","isHeader":"0","childMenus":""},
